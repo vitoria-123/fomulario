@@ -1,0 +1,49 @@
+<div class="register-form">
+
+  <form [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
+
+    <div class="form-group">
+      <label>Nome</label>
+      <input type="text" class="form-control" formControlName="nome"/><!--cadastro.jts-->
+      <div class="obrigatorio" *ngIf="cadastroForm.get('nome')?.errors?.['required'] && cadastroForm.get('nome')?.touched">Nome obrigatório*</div><!-- "?" para ver se é nulo -->
+    </div>
+
+    <div class="form-group">
+      <label>Usuário</label>
+      <input type="text" class="form-control" formControlName="usuario" />
+      <div class="obrigatorio" *ngIf="cadastroForm.get('usuario')?.errors?.['required'] && cadastroForm.get('usuario')?.touched">Usuário obrigatório*</div><!-- "?" para ver se é nulo -->
+    </div>
+
+    <div class="form-group">
+      <label>E-mail</label>
+      <input type="email" class="form-control" formControlName="email" />
+      <div class="obrigatorio" *ngIf="cadastroForm.get('email')?.errors?.['required'] && cadastroForm.get('email')?.touched">E-mail obrigatório*</div><!-- "?" para ver se é nulo -->
+    </div>
+
+    <div class="form-group">
+      <label>Senha</label>
+      <input class="form-control" type="password" formControlName="senha" />
+      <div class="obrigatorio" *ngIf="cadastroForm.get('senha')?.errors?.['required'] && cadastroForm.get('senha')?.touched">Senha obrigatório*</div><!-- "?" para ver se é nulo -->
+    </div>
+
+    <div class="form-group">
+      <label>Confirmar senha</label>
+      <input type="password" class="form-control" formControlName="confirmaSenha" />
+      <div class="obrigatorio" *ngIf="cadastroForm.get('confirmaSenha')?.errors?.['required'] && cadastroForm.get('confirmaSenha')?.touched">Confimar senha obrigatório*</div><!-- "?" para ver se é nulo -->
+    </div>
+
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" formControlName="aceite" />
+      <label for="aceitaTermos" class="form-check-label">Eu li e concordo com os Termos</label>
+      <div class="obrigatorio" *ngIf="cadastroForm.get('aceite')?.errors?.['required'] && cadastroForm.get('aceite')?.touched">Termos obrigatórios*</div><!-- "?" para ver se é nulo -->
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" [disabled]="cadastroForm.invalid">Registrar</button>
+      <button type="button" class="btn btn-warning float-right">Limpar</button>
+    </div>
+
+  </form>
+
+</div>
+
